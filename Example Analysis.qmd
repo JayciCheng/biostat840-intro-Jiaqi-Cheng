@@ -1,12 +1,17 @@
 ---
 title: "Example Analysis"
+bibliography: references.bib
 ---
 
 By describing and analyzing features of cars to distinguish the proporties of automatic and manual cars.
 
-- The intended audience are car sellers, car managers, drivers, and those who want to gain more general knowledge about automatic and manual cars.
+-   The intended audience are car sellers, car managers, drivers, and those who want to gain more general knowledge about automatic and manual cars.
 
-- The dataset [mtcars](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars) was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973--74 models).
+-   The dataset [mtcars](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)  was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973--74 models). [@facebook]
+
+::: column-margin
+There are many other interesting data analysis projects using mtcars in [Kaggle](https://www.kaggle.com/datasets/ruiromanini/mtcars).
+:::
 
 ```{r}
 #| echo: false
@@ -15,7 +20,7 @@ By describing and analyzing features of cars to distinguish the proporties of au
 knitr::include_graphics("mtcars.png")
 ```
 
-- Mtcars includes [32 observations on 11 (numeric) variables]((https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)).
+-   Mtcars includes [32 observations on 11 (numeric) variables]((https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)). [@rdocumentation]
 
 ```{r}
 #| echo: false
@@ -24,19 +29,26 @@ knitr::include_graphics("mtcars.png")
 knitr::include_graphics("data_dict.jpg")
 ```
 
-- Include necessary packages and load the data set.
+::: callout-note
+Include necessary packages and load the data set.
+:::
 
 ```{r}
 library(tidyverse)
 library(dplyr)
 library(tidyr)
+library(ggplot2)
 attach(mtcars)
 head(mtcars)
 data <- as_tibble(mtcars)
 data <- rename(data, weight = wt, shape_of_engine = vs, displacement = disp)
 ```
 
-- Preprossess the dataset.
+::: callout-tip
+## Preprocess
+:::
+
+[@quarto]
 
 ```{r}
 auto <- select(data, am:0)
@@ -45,18 +57,13 @@ data$am <- as.factor(data$am)
 data$am <- factor(data$am,levels=c("0","1"),labels=c("automatic", "manual"))
 data$shape_of_engine <- as.factor(data$shape_of_engine)
 data$shape_of_engine <- factor(data$shape_of_engine,levels=c("0","1"),labels=c("Vshaped", "straight"))
-
-
-
-
-
-
-eng_strat <- filter(data, shape_of_engine == 1)
-
-
 ```
 
-- First, we count the number of automatic and manual cars in the dataset.
+::: callout-tip
+## Data Analysis
+:::
+
+First, we count the number of automatic and manual cars in the dataset.
 
 ```{r}
 am_class <- data.frame(data$am)
@@ -72,7 +79,7 @@ ggplot(data=am_class, mapping=aes(x=am)) +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 ```
 
-- Let's have a look of the mean of important variables of these two types of cars.
+Let's have a look of the mean of important variables of these two types of cars.
 
 ```{r}
 data_gb_am <- group_by(data, am)
@@ -95,7 +102,7 @@ ggplot(qsec_ordered, aes(weight, qsec, fill = shape_of_engine, size = displaceme
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 ```
 
-- Furthermore, we explore the connection between the weight and accelerated speed of automatic cars.
+-   Furthermore, we explore the connection between the weight and accelerated speed of automatic cars.
 
 ```{r}
 auto_v <- filter(data, am == "automatic")
@@ -111,34 +118,17 @@ ggplot()+geom_line(data = df,aes(x = auto_v.weight,y = auto_v.qsec),size=1)+
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 ```
 
+::: callout-tip
+## Summary
+:::
+
+Automatic cars and manual cars have different features. In this project, we analysed the weight, accelerated speed, displacement, shape of engine, and many other properties of these two types of cars.Generally speaking, automatic cars are heavier than manual cars, can achieve higher accelerated speed and have greater displacement. Lighter cars can achieve higher accelerated speed than heavier cars.
 
 
-## 3. Include a `README.md` file
+::: callout-tip
+## Functions Used
+:::
 
-Your local repository should include a `README.md` file describing who is the author of the website and a link to the website after it has been deployed. Other things you might include are the technical details for how the website was created and/or deployed. 
+- dplyr: select, rename, arrange, filter, group_by
 
-## 4. Deploy your website
-
-Deploy your website using [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html), [GitHub pages](https://quarto.org/docs/publishing/github-pages.html), or [Netlify](https://quarto.org/docs/publishing/netlify.html). (**Note**: Deploying your website to RPubs will not be accepted).
-
-## 5. Share your website
-
-Go to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading. 
-
-As you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.
-
-- **Link to your GitHub repository**: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]
-
-- **Link to your deployed website**: [Delete this and replace the text with the link to the public deployed website you created above]
-
-
-# Part 4
-
-1. Use [`wget`](https://www.gnu.org/software/wget) to download four files that end in `.fastq` from [here](https://github.com/stephaniehicks/jhustatprogramming2022/tree/main/data). 
-2. Create a directory to download the data. The top level directory should be called `raw_data` and there should be a sub-level directory called `fastq`. The command you write should force the creation of both directories at the same time if either of them do not exist yet.
-3. Move all the `.fastq` files into the `fastq` sub-level directory. 
-4. Write a for loop in the shell that iterates over each `.fastq` file. For each `.fastq` file, do the following. In the first 1000 rows for each file, count the number of lines where the "@" symbol appears. Your final output should be four numbers printed to the screen. 
-
-```{bash}
-# Add your solution here
-```
+- ggplot2: geom_bar, geom_point, geom_line

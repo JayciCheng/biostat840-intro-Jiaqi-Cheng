@@ -83,6 +83,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -162,19 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#include-a-readme.md-file" id="toc-include-a-readme.md-file" class="nav-link active" data-scroll-target="#include-a-readme.md-file">3. Include a <code>README.md</code> file</a></li>
-  <li><a href="#deploy-your-website" id="toc-deploy-your-website" class="nav-link" data-scroll-target="#deploy-your-website">4. Deploy your website</a></li>
-  <li><a href="#share-your-website" id="toc-share-your-website" class="nav-link" data-scroll-target="#share-your-website">5. Share your website</a></li>
-  <li><a href="#part-4" id="toc-part-4" class="nav-link" data-scroll-target="#part-4">Part 4</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -195,9 +205,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>By describing and analyzing features of cars to distinguish the proporties of automatic and manual cars.</p>
 <ul>
 <li><p>The intended audience are car sellers, car managers, drivers, and those who want to gain more general knowledge about automatic and manual cars.</p></li>
-<li><p>The dataset <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars">mtcars</a> was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).</p></li>
+<li><p>The dataset <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars">mtcars</a> was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models). <span class="citation" data-cites="facebook">(<a href="#ref-facebook" role="doc-biblioref"><span>“MT Cars,”</span> n.d.</a>)</span></p></li>
 </ul>
-<div class="cell" data-layout-align="center">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>There are many other interesting data analysis projects using mtcars in <a href="https://www.kaggle.com/datasets/ruiromanini/mtcars">Kaggle</a>.</p>
+</div></div><div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -207,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <ul>
-<li>Mtcars includes <a href="(https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)">32 observations on 11 (numeric) variables</a>.</li>
+<li>Mtcars includes <a href="(https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)">32 observations on 11 (numeric) variables</a>. <span class="citation" data-cites="rdocumentation">(<a href="#ref-rdocumentation" role="doc-biblioref"><span>“MTCARS: Motor Trend Car Road Tests,”</span> n.d.</a>)</span></li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -218,9 +231,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ul>
-<li>Include necessary packages and load the data set.</li>
-</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Include necessary packages and load the data set.</p>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -235,7 +258,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The following object is masked from package:ggplot2:
 
@@ -254,27 +278,42 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mtcars)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rename</span>(data, <span class="at">weight =</span> wt, <span class="at">shape_of_engine =</span> vs, <span class="at">displacement =</span> disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>Preprossess the dataset.</li>
-</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Preprocess
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p><span class="citation" data-cites="quarto">(<a href="#ref-quarto" role="doc-biblioref"><span>“Callout Blocks,”</span> n.d.</a>)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>auto <span class="ot">&lt;-</span> <span class="fu">select</span>(data, am<span class="sc">:</span><span class="dv">0</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>manu <span class="ot">&lt;-</span> <span class="fu">select</span>(data, am<span class="sc">:</span><span class="dv">1</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>am)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>am,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">"0"</span>,<span class="st">"1"</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"automatic"</span>, <span class="st">"manual"</span>))</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>shape_of_engine <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>shape_of_engine)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>shape_of_engine <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>shape_of_engine,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">"0"</span>,<span class="st">"1"</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Vshaped"</span>, <span class="st">"straight"</span>))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>eng_strat <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, shape_of_engine <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>shape_of_engine <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>shape_of_engine,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">"0"</span>,<span class="st">"1"</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Vshaped"</span>, <span class="st">"straight"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>First, we count the number of automatic and manual cars in the dataset.</li>
-</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Data Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>First, we count the number of automatic and manual cars in the dataset.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>am_class <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(data<span class="sc">$</span>am)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>am_class <span class="ot">&lt;-</span> <span class="fu">rename</span>(am_class, <span class="at">am =</span> data.am)</span>
@@ -291,9 +330,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 <p><img src="Example-Analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<ul>
-<li>Let’s have a look of the mean of important variables of these two types of cars.</li>
-</ul>
+<p>Let’s have a look of the mean of important variables of these two types of cars.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data_gb_am <span class="ot">&lt;-</span> <span class="fu">group_by</span>(data, am)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(data_gb_am, <span class="at">miles_per_gallon =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="at">displacement =</span> <span class="fu">mean</span>(disp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">horsepower =</span> <span class="fu">mean</span>(hp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">weight =</span> <span class="fu">mean</span>(wt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">mile_time =</span> <span class="fu">mean</span>(qsec, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -347,39 +384,52 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 <p><img src="Example-Analysis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<section id="include-a-readme.md-file" class="level2">
-<h2 class="anchored" data-anchor-id="include-a-readme.md-file">3. Include a <code>README.md</code> file</h2>
-<p>Your local repository should include a <code>README.md</code> file describing who is the author of the website and a link to the website after it has been deployed. Other things you might include are the technical details for how the website was created and/or deployed.</p>
-</section>
-<section id="deploy-your-website" class="level2">
-<h2 class="anchored" data-anchor-id="deploy-your-website">4. Deploy your website</h2>
-<p>Deploy your website using <a href="https://quarto.org/docs/publishing/quarto-pub.html">Quarto Pub</a>, <a href="https://quarto.org/docs/publishing/github-pages.html">GitHub pages</a>, or <a href="https://quarto.org/docs/publishing/netlify.html">Netlify</a>. (<strong>Note</strong>: Deploying your website to RPubs will not be accepted).</p>
-</section>
-<section id="share-your-website" class="level2">
-<h2 class="anchored" data-anchor-id="share-your-website">5. Share your website</h2>
-<p>Go to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading.</p>
-<p>As you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.</p>
-<ul>
-<li><p><strong>Link to your GitHub repository</strong>: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]</p></li>
-<li><p><strong>Link to your deployed website</strong>: [Delete this and replace the text with the link to the public deployed website you created above]</p></li>
-</ul>
-</section>
-<section id="part-4" class="level1">
-<h1>Part 4</h1>
-<ol type="1">
-<li>Use <a href="https://www.gnu.org/software/wget"><code>wget</code></a> to download four files that end in <code>.fastq</code> from <a href="https://github.com/stephaniehicks/jhustatprogramming2022/tree/main/data">here</a>.</li>
-<li>Create a directory to download the data. The top level directory should be called <code>raw_data</code> and there should be a sub-level directory called <code>fastq</code>. The command you write should force the creation of both directories at the same time if either of them do not exist yet.</li>
-<li>Move all the <code>.fastq</code> files into the <code>fastq</code> sub-level directory.</li>
-<li>Write a for loop in the shell that iterates over each <code>.fastq</code> file. For each <code>.fastq</code> file, do the following. In the first 1000 rows for each file, count the number of lines where the “@” symbol appears. Your final output should be four numbers printed to the screen.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add your solution here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-caption-container flex-fill">
+Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>Automatic cars and manual cars have different features. In this project, we analysed the weight, accelerated speed, displacement, shape of engine, and many other properties of these two types of cars.Generally speaking, automatic cars are heavier than manual cars, can achieve higher accelerated speed and have greater displacement. Lighter cars can achieve higher accelerated speed than heavier cars.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Functions Used
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<ul>
+<li><p>dplyr: select, rename, arrange, filter, group_by</p></li>
+<li><p>ggplot2: geom_bar, geom_point, geom_line</p></li>
+</ul>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-quarto" class="csl-entry" role="doc-biblioentry">
+<span>“Callout Blocks.”</span> n.d. <em>Quarto</em>. <a href="https://quarto.org/docs/authoring/callouts.html">https://quarto.org/docs/authoring/callouts.html</a>.
+</div>
+<div id="ref-facebook" class="csl-entry" role="doc-biblioentry">
+<span>“MT Cars.”</span> n.d. <em>Facebook</em>. <a href="https://www.facebook.com/mtcars.co.uk/">https://www.facebook.com/mtcars.co.uk/</a>.
+</div>
+<div id="ref-rdocumentation" class="csl-entry" role="doc-biblioentry">
+<span>“MTCARS: Motor Trend Car Road Tests.”</span> n.d. <em>RDocumentation</em>. <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars">https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

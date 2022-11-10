@@ -8,4 +8,4 @@ title: "About"
 
 -   I graduated from Renmin University of China majoring in data science.
 
--   I am good at programming and really want to improve human health by data science methods.
+-   I am not so good at programming but really want to improve human health by data science methods.
