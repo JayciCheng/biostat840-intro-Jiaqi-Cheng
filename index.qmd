@@ -1,0 +1,14 @@
+---
+title: "Jiaqi Cheng"
+---
+
+Welcome to my world!
+
+Eat, sleep and sit here in a trance.
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+knitr::include_graphics("IMG.jpeg")
+```

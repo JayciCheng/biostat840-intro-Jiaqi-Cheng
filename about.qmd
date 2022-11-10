@@ -1,0 +1,11 @@
+---
+title: "About"
+---
+
+-   I am a master student in Biostatistics.
+
+-   I am interested in clinical trial methods and longitudinal data analysis.
+
+-   I graduated from Renmin University of China majoring in data science.
+
+-   I am good at programming and really want to improve human health by data science methods.

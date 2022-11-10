@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Jiaqi Cheng",
+    "section": "",
+    "text": "Eat, sleep and sit here in a trance."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I am a master student in Biostatistics.\nI am interested in clinical trial methods and longitudinal data analysis.\nI graduated from Renmin University of China majoring in data science.\nI am good at programming and really want to improve human health by data science methods."
+  },
+  {
+    "objectID": "Example Analysis.html",
+    "href": "Example Analysis.html",
+    "title": "Example Analysis",
+    "section": "",
+    "text": "By describing and analyzing features of cars to distinguish the proporties of automatic and manual cars."
+  },
+  {
+    "objectID": "Example Analysis.html#include-a-readme.md-file",
+    "href": "Example Analysis.html#include-a-readme.md-file",
+    "title": "Example Analysis",
+    "section": "3. Include a README.md file",
+    "text": "3. Include a README.md file\nYour local repository should include a README.md file describing who is the author of the website and a link to the website after it has been deployed. Other things you might include are the technical details for how the website was created and/or deployed."
+  },
+  {
+    "objectID": "Example Analysis.html#deploy-your-website",
+    "href": "Example Analysis.html#deploy-your-website",
+    "title": "Example Analysis",
+    "section": "4. Deploy your website",
+    "text": "4. Deploy your website\nDeploy your website using Quarto Pub, GitHub pages, or Netlify. (Note: Deploying your website to RPubs will not be accepted)."
+  },
+  {
+    "objectID": "Example Analysis.html#share-your-website",
+    "href": "Example Analysis.html#share-your-website",
+    "title": "Example Analysis",
+    "section": "5. Share your website",
+    "text": "5. Share your website\nGo to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading.\nAs you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.\n\nLink to your GitHub repository: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]\nLink to your deployed website: [Delete this and replace the text with the link to the public deployed website you created above]"
+  }
+]

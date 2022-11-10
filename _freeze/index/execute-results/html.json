@@ -1,0 +1,14 @@
+{
+  "hash": "9fc411a9a3d119142e8bd720af06c4a4",
+  "result": {
+    "markdown": "---\ntitle: \"Jiaqi Cheng\"\n---\n\n\nWelcome to my world!\n\nEat, sleep and sit here in a trance.\n\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](IMG.jpeg){fig-align='center' width=764}\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

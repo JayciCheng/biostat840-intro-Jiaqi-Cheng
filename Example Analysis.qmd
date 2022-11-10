@@ -1,0 +1,144 @@
+---
+title: "Example Analysis"
+---
+
+By describing and analyzing features of cars to distinguish the proporties of automatic and manual cars.
+
+- The intended audience are car sellers, car managers, drivers, and those who want to gain more general knowledge about automatic and manual cars.
+
+- The dataset [mtcars](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars) was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973--74 models).
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+knitr::include_graphics("mtcars.png")
+```
+
+- Mtcars includes [32 observations on 11 (numeric) variables]((https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/mtcars)).
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+knitr::include_graphics("data_dict.jpg")
+```
+
+- Include necessary packages and load the data set.
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+attach(mtcars)
+head(mtcars)
+data <- as_tibble(mtcars)
+data <- rename(data, weight = wt, shape_of_engine = vs, displacement = disp)
+```
+
+- Preprossess the dataset.
+
+```{r}
+auto <- select(data, am:0)
+manu <- select(data, am:1)
+data$am <- as.factor(data$am)
+data$am <- factor(data$am,levels=c("0","1"),labels=c("automatic", "manual"))
+data$shape_of_engine <- as.factor(data$shape_of_engine)
+data$shape_of_engine <- factor(data$shape_of_engine,levels=c("0","1"),labels=c("Vshaped", "straight"))
+
+
+
+
+
+
+eng_strat <- filter(data, shape_of_engine == 1)
+
+
+```
+
+- First, we count the number of automatic and manual cars in the dataset.
+
+```{r}
+am_class <- data.frame(data$am)
+am_class <- rename(am_class, am = data.am)
+
+ggplot(data=am_class, mapping=aes(x=am)) +
+  geom_bar(stat="count",width=0.5, fill="#666666") +
+  xlab("car type") + ylab("count") +
+  labs(title = "Bar Plot of Number of Two Types of Cars",
+              subtitle = "Count the number of automatic cars and manual cars seperately",
+              caption = "Jiaqi Cheng") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
+```
+
+- Let's have a look of the mean of important variables of these two types of cars.
+
+```{r}
+data_gb_am <- group_by(data, am)
+summarise(data_gb_am, miles_per_gallon = mean(mpg, na.rm=TRUE), displacement = mean(disp, na.rm = TRUE), horsepower = mean(hp, na.rm = TRUE), weight = mean(wt, na.rm = TRUE), mile_time = mean(qsec, na.rm=TRUE))
+```
+
+- Then we evaluate the accelerated speed of two types of cars.
+
+```{r}
+qsec_ordered <- arrange(data, qsec)
+
+ggplot(qsec_ordered, aes(weight, qsec, fill = shape_of_engine, size = displacement)) +
+  geom_point(shape=21,colour="black",stroke=0.25,alpha=0.8) + 
+  facet_grid(.~am) +
+  xlab("weight (1000 lbs)") + ylab("accelerated speed (1/4 mile time)") +
+  labs(title = "Numeric Proporties of Automatic and Manual Cars",
+              subtitle = "Compare weight, accelerated speed, displacement, shape of engine of two types of cars",
+              caption = "Jiaqi Cheng") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
+```
+
+- Furthermore, we explore the connection between the weight and accelerated speed of automatic cars.
+
+```{r}
+auto_v <- filter(data, am == "automatic")
+df <- data.frame(auto_v$weight, auto_v$qsec)
+
+ggplot()+geom_line(data = df,aes(x = auto_v.weight,y = auto_v.qsec),size=1)+
+  geom_point(data = df,aes(x = auto_v.weight,y = auto_v.qsec),size=3)+
+  xlab("weight")+ylab("accelerated speed")+
+  labs(title = "Line Chart of Weight and Accelerated Speed of Automatic Cars",
+              subtitle = "Compare the accelerated speed of automatic cars of different weight",
+              caption = "Jiaqi Cheng") +
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
+```
+
+
+
+## 3. Include a `README.md` file
+
+Your local repository should include a `README.md` file describing who is the author of the website and a link to the website after it has been deployed. Other things you might include are the technical details for how the website was created and/or deployed. 
+
+## 4. Deploy your website
+
+Deploy your website using [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html), [GitHub pages](https://quarto.org/docs/publishing/github-pages.html), or [Netlify](https://quarto.org/docs/publishing/netlify.html). (**Note**: Deploying your website to RPubs will not be accepted).
+
+## 5. Share your website
+
+Go to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading. 
+
+As you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.
+
+- **Link to your GitHub repository**: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]
+
+- **Link to your deployed website**: [Delete this and replace the text with the link to the public deployed website you created above]
+
+
+# Part 4
+
+1. Use [`wget`](https://www.gnu.org/software/wget) to download four files that end in `.fastq` from [here](https://github.com/stephaniehicks/jhustatprogramming2022/tree/main/data). 
+2. Create a directory to download the data. The top level directory should be called `raw_data` and there should be a sub-level directory called `fastq`. The command you write should force the creation of both directories at the same time if either of them do not exist yet.
+3. Move all the `.fastq` files into the `fastq` sub-level directory. 
+4. Write a for loop in the shell that iterates over each `.fastq` file. For each `.fastq` file, do the following. In the first 1000 rows for each file, count the number of lines where the "@" symbol appears. Your final output should be four numbers printed to the screen. 
+
+```{bash}
+# Add your solution here
+```
